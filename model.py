@@ -8,8 +8,8 @@ from mesa.datacollection import DataCollector
 class HumanAgent(Agent):
     def __init__(self,model,height,width):
         super().__init__(model)
-        self.pos_x=random.randint(100, 700)
-        self.pos_y=random.randint(140, 500)
+        self.pos_x = self.random.randint(100, 700)
+        self.pos_y = self.random.randint(140, 500)
         self.vel_x = self.random.randint(-5, 5)
         self.vel_y = self.random.randint(-5, 5)
 
@@ -19,8 +19,6 @@ class HumanAgent(Agent):
         self.height = height
         self.width = width
     
-    def say_hello(self):
-        print(f"Hello, I am agent {self.unique_id} and I have lived for {self.days_lived} days and my status is {self.status} and I have been infected for {self.infected_days} days")
     def live_a_day(self):
         self.days_lived += 1
         if self.status == "infecté":
@@ -28,7 +26,6 @@ class HumanAgent(Agent):
             if self.infected_days >= 20:
                 self.status = "rétabli"
                 self.infected_days = 0
-                print(f"Agent {self.unique_id} has recovered from infection after {self.days_lived} days.")
     def deplacement(self):
         if self.random.random() < 0.2:
             self.vel_x = self.random.randint(-5, 5)
@@ -75,7 +72,6 @@ class VirusSimulation(mesa.Model):
             agent.live_a_day()
             agent.deplacement()
         self.day += 1
-        self.agents.do("say_hello")
         self.transmission()
         self.datacollector.collect(self)
     def transmission(self):

@@ -3,7 +3,7 @@ from model import VirusSimulation
 import pandas as pd
 ##initialisation des agents
 
-model = VirusSimulation(height=600, width=800, n=100, infected=10)
+model = VirusSimulation(height=600, width=800, n=100, infected=10,rng= 42)
 
 
 pygame.init()
