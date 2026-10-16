@@ -3,11 +3,11 @@ from model import VirusSimulation
 import pandas as pd
 ##initialisation des agents
 
-model = VirusSimulation(height=600, width=800, n=100, infected=10,rng= 42)
+model = VirusSimulation(height=720, width=1280, n=100, infected=10,rng= 42)
 
 
 pygame.init()
-screen = pygame.display.set_mode((800, 600))
+screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 font = pygame.font.Font("assets/fonts/PixeloidSans.ttf", 16)
@@ -28,7 +28,7 @@ while running:
 
     for i, text in enumerate(step_text):
         screen.blit(font.render(text, True, (255, 255, 255)), (10, 10 + i * 40))
-    screen.blit(my_text, (225, 500))
+    screen.blit(my_text, (500, 700))
     for agent in model.agents:
         if agent.status == "infecté":
             pygame.draw.circle(screen, (255, 0, 0), (agent.pos_x, agent.pos_y), 5)

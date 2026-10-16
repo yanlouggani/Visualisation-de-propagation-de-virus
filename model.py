@@ -8,8 +8,8 @@ from mesa.datacollection import DataCollector
 class HumanAgent(Agent):
     def __init__(self,model,height,width):
         super().__init__(model)
-        self.pos_x = self.random.randint(100, 700)
-        self.pos_y = self.random.randint(140, 500)
+        self.pos_x = self.random.randint(100, width - 100)
+        self.pos_y = self.random.randint(140, height - 100)
         self.vel_x = self.random.randint(-5, 5)
         self.vel_y = self.random.randint(-5, 5)
 
